@@ -1,0 +1,16 @@
+turno
+tipo_transaccion
+sitio
+origen
+moneda
+centro_costo
+users
+type_users
+tipo_producto
+tipo_encomienda
+motivo_devolucion
+area
+actividad
+compania
+tipo_persona
+dependencia

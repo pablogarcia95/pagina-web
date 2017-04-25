@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="control" schema="nomina" type="PostgreSQL - 9.3.4">
+   <tables>
+      <table name="ausencias" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.ausencias_ausencias_id_seq'::regclass)" digits="0" id="0" name="ausencias_id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="ausencias_id" sequenceNumberInPK="1"/>
+         <index name="ausencias_pk" unique="true">
+            <column ascending="true" name="ausencias_id"/>
+         </index>
+      </table>
+      <table name="calendarios_feriados" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.calendarios_feriados_calendarios_feriados_id_seq'::regclass)" digits="0" id="0" name="calendarios_feriados_id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="festivos_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="festivos_id" foreignKey="fk6a63e0814ff7b56" implied="false" onDeleteCascade="false" table="festivos"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="calendarios_feriados_id" sequenceNumberInPK="1"/>
+         <primaryKey column="festivos_id" sequenceNumberInPK="2"/>
+         <index name="calendarios_feriados_pk" unique="true">
+            <column ascending="true" name="calendarios_feriados_id"/>
+            <column ascending="true" name="festivos_id"/>
+         </index>
+      </table>
+      <table name="cargo" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.cargo_cargo_id_seq'::regclass)" digits="0" id="0" name="cargo_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="cargo_id" foreignKey="fk6b68e0614ff7b62" implied="false" onDeleteCascade="false" table="trabajador"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="cargo_id" sequenceNumberInPK="1"/>
+         <index name="cargo_pk" unique="true">
+            <column ascending="true" name="cargo_id"/>
+         </index>
+      </table>
+      <table name="comedor" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.comedor_comedor_id_seq'::regclass)" digits="0" id="0" name="comedor_id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="hora_inicio_lunch" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="hora_fin_lunch" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="costo_lunch" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="costo_comida" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="comedor_id" sequenceNumberInPK="1"/>
+         <index name="comedor_pk" unique="true">
+            <column ascending="true" name="comedor_id"/>
+         </index>
+      </table>
+      <table name="configuracion" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.configuracion_configuracion_id_seq'::regclass)" digits="0" id="0" name="configuracion_id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="tolerancia" nullable="true" remarks="" size="64" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="configuracion_id" sequenceNumberInPK="1"/>
+         <index name="configuracion_pk" unique="true">
+            <column ascending="true" name="configuracion_id"/>
+         </index>
+      </table>
+      <table name="estacionamiento" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.estacionamiento_estacionamiento_id_seq'::regclass)" digits="0" id="0" name="estacionamiento_id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="estacionamiento_id" sequenceNumberInPK="1"/>
+         <index name="estacionamiento_pk" unique="true">
+            <column ascending="true" name="estacionamiento_id"/>
+         </index>
+      </table>
+      <table name="festivos" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.festivos_festivos_id_seq'::regclass)" digits="0" id="0" name="festivos_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="festivos_id" foreignKey="fk6a63e0814ff7b56" implied="false" onDeleteCascade="false" table="calendarios_feriados"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="fecha" nullable="true" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="3" name="dia_feriado_movil" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="4" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="festivos_id" sequenceNumberInPK="1"/>
+         <index name="festivos_pk" unique="true">
+            <column ascending="true" name="festivos_id"/>
+         </index>
+      </table>
+      <table name="gerente" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.gerente_gerente_id_seq'::regclass)" digits="0" id="0" name="gerente_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="gerente_id" foreignKey="fk6a68e0814fb7b53" implied="false" onDeleteCascade="false" table="grupo_gerente"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="gerente_id" sequenceNumberInPK="1"/>
+         <index name="gerente_pk" unique="true">
+            <column ascending="true" name="gerente_id"/>
+         </index>
+      </table>
+      <table name="grupo" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.grupo_grupo_id_seq'::regclass)" digits="0" id="0" name="grupo_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="grupo_id" foreignKey="fk6a68e0814fb7f53" implied="false" onDeleteCascade="false" table="grupo_trabajador"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="grupo_id" sequenceNumberInPK="1"/>
+         <index name="grupo_pk" unique="true">
+            <column ascending="true" name="grupo_id"/>
+         </index>
+      </table>
+      <table name="grupo_gerente" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.grupo_gerente_gerente_id_seq'::regclass)" digits="0" id="0" name="gerente_id" nullable="false" remarks="" size="10" type="serial">
+            <parent column="gerente_id" foreignKey="fk6a68e0814fb7b53" implied="false" onDeleteCascade="false" table="gerente"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="grupo_supervision_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="grupo_supervision_id" foreignKey="fk6a68e0814fb7b54" implied="false" onDeleteCascade="false" table="grupo_supervision"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="gerente_id" sequenceNumberInPK="1"/>
+         <index name="grupo_gerente_pk" unique="true">
+            <column ascending="true" name="gerente_id"/>
+         </index>
+      </table>
+      <table name="grupo_supervision" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.grupo_supervision_grupo_supervision_id_seq'::regclass)" digits="0" id="0" name="grupo_supervision_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="grupo_supervision_id" foreignKey="fk6a68e0814fb7b54" implied="false" onDeleteCascade="false" table="grupo_gerente"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="grupo_supervision_id" sequenceNumberInPK="1"/>
+         <index name="grupo_supervision_pk" unique="true">
+            <column ascending="true" name="grupo_supervision_id"/>
+         </index>
+      </table>
+      <table name="grupo_trabajador" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.grupo_trabajador_grupo_id_seq'::regclass)" digits="0" id="0" name="grupo_id" nullable="false" remarks="" size="10" type="serial">
+            <parent column="grupo_id" foreignKey="fk6a68e0814fb7f53" implied="false" onDeleteCascade="false" table="grupo"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="codigo_trabajador" nullable="false" remarks="" size="64" type="varchar">
+            <parent column="codigo_trabajador" foreignKey="fk6a68e0814fb7b56" implied="false" onDeleteCascade="false" table="trabajador"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="grupo_id" sequenceNumberInPK="1"/>
+         <primaryKey column="codigo_trabajador" sequenceNumberInPK="2"/>
+         <index name="grupo_trabajador_pk" unique="true">
+            <column ascending="true" name="grupo_id"/>
+            <column ascending="true" name="codigo_trabajador"/>
+         </index>
+      </table>
+      <table name="horario" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.horario_horario_id_seq'::regclass)" digits="0" id="0" name="horario_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="horario_id" foreignKey="fk6a68e0814fb7f51" implied="false" onDeleteCascade="false" table="item_rotacion"/>
+            <child column="horario_id" foreignKey="fk6b68e0614ff7b59" implied="false" onDeleteCascade="false" table="permiso_grupo"/>
+            <child column="horario_id_para_permiso" foreignKey="fk6b68e0614ff7b63" implied="false" onDeleteCascade="false" table="permiso_grupo"/>
+            <child column="horario_id" foreignKey="fk6b68e0614ff7b59" implied="false" onDeleteCascade="false" table="trabajador"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="comienzo_jornada" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="comienzo_comida" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="tiempo_comer" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="final_comida" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="final_jornada" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="7" name="descanso_lunes" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="8" name="descanso_martes" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="9" name="descanso_miercoles" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="10" name="descanso_nueves" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="11" name="descanso_viernes" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="12" name="descanso_sabado" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="13" name="descanso_domingo" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="14" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="horario_id" sequenceNumberInPK="1"/>
+         <index name="horario_pk" unique="true">
+            <column ascending="true" name="horario_id"/>
+         </index>
+      </table>
+      <table name="item_rotacion" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="rotacion_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="rotacion_id" foreignKey="fk6a68e08dffb7f51" implied="false" onDeleteCascade="false" table="rotacion"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="item_rotacion_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="horario_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="horario_id" foreignKey="fk6a68e0814fb7f51" implied="false" onDeleteCascade="false" table="horario"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="fecha_comienzo" nullable="true" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="4" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="item_rotacion_id" sequenceNumberInPK="1"/>
+         <primaryKey column="rotacion_id" sequenceNumberInPK="2"/>
+         <index name="item_rotacion_pk" unique="true">
+            <column ascending="true" name="item_rotacion_id"/>
+            <column ascending="true" name="rotacion_id"/>
+         </index>
+      </table>
+      <table name="justificacion_ausencia" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.justificacion_ausencia_justificacion_ausencia_id_seq'::regclass)" digits="0" id="0" name="justificacion_ausencia_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="justificacion_ausencia_id" foreignKey="fk6b68e0614ff7b62" implied="false" onDeleteCascade="false" table="permiso_grupo"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="justificacion_ausencia_id" sequenceNumberInPK="1"/>
+         <index name="justificacion_ausencia_pk" unique="true">
+            <column ascending="true" name="justificacion_ausencia_id"/>
+         </index>
+      </table>
+      <table name="justificacion_sobretiempo" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.justificacion_sobretiempo_justificacion_sobretiempo_id_seq'::regclass)" digits="0" id="0" name="justificacion_sobretiempo_id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="justificacion_sobretiempo_id" sequenceNumberInPK="1"/>
+         <index name="justificacion_sobretiempo_pk" unique="true">
+            <column ascending="true" name="justificacion_sobretiempo_id"/>
+         </index>
+      </table>
+      <table name="permiso_grupo" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="compania_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="compania_id" foreignKey="fk6a68e0814ff7b56" implied="false" onDeleteCascade="false" table="compania"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="dependencia_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="dependencia_id" foreignKey="fk6b68e0614ff7b57" implied="false" onDeleteCascade="false" table="dependencia"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="tipo_trabajador_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="tipo_trabajador_id" foreignKey="fk6b68e0614ff7b58" implied="false" onDeleteCascade="false" table="tipo_trabajador"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="horario_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="horario_id" foreignKey="fk6b68e0614ff7b59" implied="false" onDeleteCascade="false" table="horario"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="4" name="rotacion_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="rotacion_id" foreignKey="fk6b68e0614ff7b60" implied="false" onDeleteCascade="false" table="rotacion"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="5" name="grupo_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="tipo_permiso_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="tipo_permiso_id" foreignKey="fk6b68e0614ff7b61" implied="false" onDeleteCascade="false" table="tipo_permiso"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="7" name="fecha_desde" nullable="true" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="8" name="fecha_hasta" nullable="true" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="9" name="justificacion_ausencia_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="justificacion_ausencia_id" foreignKey="fk6b68e0614ff7b62" implied="false" onDeleteCascade="false" table="justificacion_ausencia"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="10" name="horario_id_para_permiso" nullable="true" remarks="" size="10" type="int4">
+            <parent column="horario_id" foreignKey="fk6b68e0614ff7b63" implied="false" onDeleteCascade="false" table="horario"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="11" name="observaciones" nullable="true" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="12" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="compania_id" sequenceNumberInPK="1"/>
+         <primaryKey column="dependencia_id" sequenceNumberInPK="2"/>
+         <primaryKey column="tipo_trabajador_id" sequenceNumberInPK="3"/>
+         <primaryKey column="horario_id" sequenceNumberInPK="4"/>
+         <primaryKey column="rotacion_id" sequenceNumberInPK="5"/>
+         <primaryKey column="grupo_id" sequenceNumberInPK="6"/>
+         <primaryKey column="tipo_permiso_id" sequenceNumberInPK="7"/>
+         <index name="permiso_grupo_pk" unique="true">
+            <column ascending="true" name="compania_id"/>
+            <column ascending="true" name="dependencia_id"/>
+            <column ascending="true" name="tipo_trabajador_id"/>
+            <column ascending="true" name="horario_id"/>
+            <column ascending="true" name="rotacion_id"/>
+            <column ascending="true" name="grupo_id"/>
+            <column ascending="true" name="tipo_permiso_id"/>
+         </index>
+      </table>
+      <table name="puesto" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.puesto_puesto_id_seq'::regclass)" digits="0" id="0" name="puesto_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="puesto_id" foreignKey="fk6b68e0614ff7b61" implied="false" onDeleteCascade="false" table="trabajador"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="puesto_id" sequenceNumberInPK="1"/>
+         <index name="puesto_pk" unique="true">
+            <column ascending="true" name="puesto_id"/>
+         </index>
+      </table>
+      <table name="rotacion" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.rotacion_rotacion_id_seq'::regclass)" digits="0" id="0" name="rotacion_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="rotacion_id" foreignKey="fk6a68e08dffb7f51" implied="false" onDeleteCascade="false" table="item_rotacion"/>
+            <child column="rotacion_id" foreignKey="fk6b68e0614ff7b60" implied="false" onDeleteCascade="false" table="permiso_grupo"/>
+            <child column="rotacion_id" foreignKey="fk6b68e0614ff7b60" implied="false" onDeleteCascade="false" table="trabajador"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="tipo_rotacion_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="tipo_rotacion_id" foreignKey="fk6a68e0814fb7b56" implied="false" onDeleteCascade="false" table="tipo_rotacion"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="secuencia" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="dias_por_grupo" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="cantidad_horario" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="item_rotacion_id" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="7" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="rotacion_id" sequenceNumberInPK="1"/>
+         <index name="rotacion_pk" unique="true">
+            <column ascending="true" name="rotacion_id"/>
+         </index>
+      </table>
+      <table name="sucursal" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.sucursal_sucursal_id_seq'::regclass)" digits="0" id="0" name="sucursal_id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="sucursal_id" sequenceNumberInPK="1"/>
+         <index name="sucursal_pk" unique="true">
+            <column ascending="true" name="sucursal_id"/>
+         </index>
+      </table>
+      <table name="suplencias" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.suplencias_suplencias_id_seq'::regclass)" digits="0" id="0" name="suplencias_id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="codigo_trabajador" nullable="false" remarks="" size="64" type="varchar">
+            <parent column="codigo_trabajador" foreignKey="fk6b68e0614ff7b61" implied="false" onDeleteCascade="false" table="trabajador"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="desde" nullable="true" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="4" name="hasta" nullable="true" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="5" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="suplencias_id" sequenceNumberInPK="1"/>
+         <index name="suplencias_pk" unique="true">
+            <column ascending="true" name="suplencias_id"/>
+         </index>
+      </table>
+      <table name="terminal" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.terminal_terminal_id_seq'::regclass)" digits="0" id="0" name="terminal_id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="ip" nullable="true" remarks="" size="25" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="terminal_id" sequenceNumberInPK="1"/>
+         <index name="terminal_pk" unique="true">
+            <column ascending="true" name="terminal_id"/>
+         </index>
+      </table>
+      <table name="tipo_permiso" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.tipo_permiso_tipo_permiso_id_seq'::regclass)" digits="0" id="0" name="tipo_permiso_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="tipo_permiso_id" foreignKey="fk6b68e0614ff7b61" implied="false" onDeleteCascade="false" table="permiso_grupo"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="tipo_permiso_id" sequenceNumberInPK="1"/>
+         <index name="tipo_permiso_pk" unique="true">
+            <column ascending="true" name="tipo_permiso_id"/>
+         </index>
+      </table>
+      <table name="tipo_rotacion" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.tipo_rotacion_tipo_rotacion_id_seq'::regclass)" digits="0" id="0" name="tipo_rotacion_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="tipo_rotacion_id" foreignKey="fk6a68e0814fb7b56" implied="false" onDeleteCascade="false" table="rotacion"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="tipo_rotacion_id" sequenceNumberInPK="1"/>
+         <index name="tipo_rotacion_pk" unique="true">
+            <column ascending="true" name="tipo_rotacion_id"/>
+         </index>
+      </table>
+      <table name="tipo_trabajador" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('nomina.tipo_trabajador_tipo_trabajador_id_seq'::regclass)" digits="0" id="0" name="tipo_trabajador_id" nullable="false" remarks="" size="10" type="serial">
+            <child column="tipo_trabajador_id" foreignKey="fk6b68e0614ff7b58" implied="false" onDeleteCascade="false" table="permiso_grupo"/>
+            <child column="tipo_trabajador_id" foreignKey="fk6b68e0614ff7b58" implied="false" onDeleteCascade="false" table="trabajador"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="genera_horas_trabajadas" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="3" name="genera_sobretiempo" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="4" name="genera_horas_ausencia" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="5" name="calcula_horas_en_terminales_de_acceso" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="6" name="horario_fexible" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="7" name="descuenta_salidas_intermedios" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="8" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="tipo_trabajador_id" sequenceNumberInPK="1"/>
+         <index name="tipo_trabajador_pk" unique="true">
+            <column ascending="true" name="tipo_trabajador_id"/>
+         </index>
+      </table>
+      <table name="trabajador" numRows="0" remarks="" schema="nomina" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="codigo_trabajador" nullable="false" remarks="" size="64" type="varchar">
+            <child column="codigo_trabajador" foreignKey="fk6a68e0814fb7b56" implied="false" onDeleteCascade="false" table="grupo_trabajador"/>
+            <child column="codigo_trabajador" foreignKey="fk6b68e0614ff7b61" implied="false" onDeleteCascade="false" table="suplencias"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="nombre_completo" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="apellido" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="compania_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="compania_id" foreignKey="fk6a68e0814ff7b56" implied="false" onDeleteCascade="false" table="compania"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="4" name="dependencia_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="dependencia_id" foreignKey="fk6b68e0614ff7b57" implied="false" onDeleteCascade="false" table="dependencia"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="5" name="tipo_trabajador_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="tipo_trabajador_id" foreignKey="fk6b68e0614ff7b58" implied="false" onDeleteCascade="false" table="tipo_trabajador"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="6" name="horario_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="horario_id" foreignKey="fk6b68e0614ff7b59" implied="false" onDeleteCascade="false" table="horario"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="7" name="rotacion_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="rotacion_id" foreignKey="fk6b68e0614ff7b60" implied="false" onDeleteCascade="false" table="rotacion"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="8" name="puesto_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="puesto_id" foreignKey="fk6b68e0614ff7b61" implied="false" onDeleteCascade="false" table="puesto"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="9" name="coreo_e" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="10" name="telefono_casa" nullable="true" remarks="" size="64" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="11" name="telefono_interno" nullable="true" remarks="" size="64" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="12" name="scan_foto" nullable="true" remarks="" size="2147483647" type="bytea"/>
+         <column autoUpdated="false" digits="0" id="13" name="scan_cedula" nullable="true" remarks="" size="2147483647" type="bytea"/>
+         <column autoUpdated="false" digits="0" id="14" name="scan_huella" nullable="true" remarks="" size="2147483647" type="bytea"/>
+         <column autoUpdated="false" digits="0" id="15" name="codigo_carnet" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="16" name="autorizador_terminal" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="17" name="viajero" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="18" name="paso_libre_terminales" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="19" name="trabajador_inactivo" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="20" name="ocasional" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="21" name="acceso_estacionamiento" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="22" name="primario" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="23" name="secundario" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="24" name="codigo_trabajador_grupo_gerente" nullable="false" remarks="" size="64" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="25" name="codigo_trabajador_grupo_supervisor" nullable="false" remarks="" size="64" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="26" name="cedula" nullable="false" remarks="" size="64" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="27" name="visitable" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="28" name="cargo_id" nullable="true" remarks="" size="10" type="int4">
+            <parent column="cargo_id" foreignKey="fk6b68e0614ff7b62" implied="false" onDeleteCascade="false" table="cargo"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="29" name="observaciones" nullable="true" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="30" name="estado" nullable="true" remarks="" size="1" type="varchar"/>
+         <primaryKey column="codigo_trabajador" sequenceNumberInPK="1"/>
+         <index name="trabajador_pk" unique="true">
+            <column ascending="true" name="codigo_trabajador"/>
+         </index>
+      </table>
+   </tables>
+</database>

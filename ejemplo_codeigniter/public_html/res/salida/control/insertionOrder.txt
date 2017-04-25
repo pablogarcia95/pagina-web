@@ -1,0 +1,14 @@
+contratista
+antecedente
+caja_menor
+control_taxi
+correspondencia
+devolucion
+exportacion
+permisos
+presta_llave
+conductor
+visitante
+minuta
+control_bus
+horarios_habiles

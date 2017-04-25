@@ -1,0 +1,36 @@
+// dot 2.26.3 on Linux 3.2.0-4-686-pae
+// SchemaSpy rev 590
+digraph "comedor" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "comedor" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">comedor</TD></TR>
+      <TR><TD PORT="comedor_id" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">comedor_id</TD></TR>
+      <TR><TD PORT="descripcion" COLSPAN="3" ALIGN="LEFT">descripcion</TD></TR>
+      <TR><TD PORT="hora_inicio_lunch" COLSPAN="3" ALIGN="LEFT">hora_inicio_lunch</TD></TR>
+      <TR><TD PORT="hora_fin_lunch" COLSPAN="3" ALIGN="LEFT">hora_fin_lunch</TD></TR>
+      <TR><TD PORT="costo_lunch" COLSPAN="3" ALIGN="LEFT">costo_lunch</TD></TR>
+      <TR><TD PORT="costo_comida" COLSPAN="3" ALIGN="LEFT">costo_comida</TD></TR>
+      <TR><TD PORT="estado" COLSPAN="3" ALIGN="LEFT">estado</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/comedor.html"
+    tooltip="comedor"
+  ];
+}

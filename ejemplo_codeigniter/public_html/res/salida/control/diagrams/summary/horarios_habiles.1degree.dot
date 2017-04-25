@@ -1,0 +1,38 @@
+// dot 2.26.3 on Linux 3.2.0-4-686-pae
+// SchemaSpy rev 590
+digraph "horarios_habiles" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "horarios_habiles" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">horarios_habiles</TD></TR>
+      <TR><TD PORT="id_horario" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">id_horario</TD></TR>
+      <TR><TD PORT="tipo_horario" COLSPAN="3" ALIGN="LEFT">tipo_horario</TD></TR>
+      <TR><TD PORT="dia_semana" COLSPAN="3" ALIGN="LEFT">dia_semana</TD></TR>
+      <TR><TD PORT="hora_inicio" COLSPAN="3" ALIGN="LEFT">hora_inicio</TD></TR>
+      <TR><TD PORT="hora_sale" COLSPAN="3" ALIGN="LEFT">hora_sale</TD></TR>
+      <TR><TD PORT="fecha_entra" COLSPAN="3" ALIGN="LEFT">fecha_entra</TD></TR>
+      <TR><TD PORT="fecha_sale" COLSPAN="3" ALIGN="LEFT">fecha_sale</TD></TR>
+      <TR><TD PORT="observaciones" COLSPAN="3" ALIGN="LEFT">observaciones</TD></TR>
+      <TR><TD PORT="estado" COLSPAN="3" ALIGN="LEFT">estado</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/horarios_habiles.html"
+    tooltip="horarios_habiles"
+  ];
+}

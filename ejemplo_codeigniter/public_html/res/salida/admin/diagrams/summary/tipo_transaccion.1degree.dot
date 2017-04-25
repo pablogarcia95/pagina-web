@@ -1,0 +1,32 @@
+// dot 2.26.3 on Linux 3.2.0-4-686-pae
+// SchemaSpy rev 590
+digraph "tipo_transaccion" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "tipo_transaccion" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">tipo_transaccion</TD></TR>
+      <TR><TD PORT="tipo_transaccion_id" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">tipo_transaccion_id</TD></TR>
+      <TR><TD PORT="descripcion" COLSPAN="3" ALIGN="LEFT">descripcion</TD></TR>
+      <TR><TD PORT="estado" COLSPAN="3" ALIGN="LEFT">estado</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/tipo_transaccion.html"
+    tooltip="tipo_transaccion"
+  ];
+}
